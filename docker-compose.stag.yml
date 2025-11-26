@@ -1,0 +1,16 @@
+services:
+  Sanay-Quoting-Tool-Frontend:
+    image: registry.webcase.me/node-projects/sanay-quoting-tool/sanay-quoting-tool-frontend:Staging
+    container_name: Sanay-Quoting-Tool-Frontend-staging
+    env_file:
+      - .env
+    networks:
+      - traefik-reverse-proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.Sanay-Quoting-Tool-Frontend-stag.rule=Host(`sanay-quoting.webcase.me`)"
+      - "traefik.http.services.Sanay-Quoting-Tool-Frontend-stag.loadbalancer.server.port=3000"
+networks:
+  traefik-reverse-proxy:
+    name: traefik-reverse-proxy
+    external: true

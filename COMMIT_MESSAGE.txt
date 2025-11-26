@@ -1,0 +1,18 @@
+feat(pdf): implement Puppeteer-based PDF generation with React components
+
+- Add QuotePDFComponent for rendering 11-page PDF reports
+- Create /api/create-pdf route for server-side PDF generation
+- Create /api/download-pdf route for PDF downloads by key
+- Add pdf-renderer utility with dynamic import for react-dom/server
+- Update /api/report route to use new PDF generation system
+- Integrate PDF upload to Supabase Storage (sanay bucket)
+- Store PDF metadata in pdf_files table
+
+Technical improvements:
+- Use dynamic import to avoid Next.js restrictions on react-dom/server
+- Add comprehensive error handling for PDF generation pipeline
+- Convert Puppeteer Uint8Array to Buffer for Supabase upload
+- Remove CSS imports from SSR components (styles inlined in API route)
+
+BREAKING CHANGE: PDF generation now uses React components instead of HTML strings
+

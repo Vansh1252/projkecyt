@@ -1,0 +1,547 @@
+/* PDF-specific styles for print rendering */
+.pdf-container {
+  width: 100%;
+  background: #ffffff;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
+    Arial, sans-serif;
+  color: #1a1a1a;
+  line-height: 1.6;
+}
+
+.pdf-page {
+  width: 210mm;
+  min-height: 297mm;
+  padding: 20mm 15mm;
+  margin: 0 auto;
+  background: white;
+  page-break-after: always;
+  page-break-inside: avoid;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Cover Page */
+.cover-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(135deg, #7839ee 0%, #5b21b6 100%);
+  color: white;
+}
+
+.cover-content {
+  width: 100%;
+}
+
+.logo-section {
+  margin-bottom: 40px;
+}
+
+.company-logo {
+  font-size: 72px;
+  font-weight: 700;
+  letter-spacing: 8px;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.report-title {
+  font-size: 48px;
+  font-weight: 600;
+  margin: 20px 0 60px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+}
+
+.company-info {
+  margin-top: 80px;
+}
+
+.company-name {
+  font-size: 32px;
+  font-weight: 500;
+  margin: 20px 0;
+}
+
+.generated-date {
+  font-size: 18px;
+  opacity: 0.9;
+  margin-top: 20px;
+}
+
+/* Page Headers */
+.page-header {
+  border-bottom: 3px solid #7839ee;
+  padding-bottom: 15px;
+  margin-bottom: 30px;
+}
+
+.page-header h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #7839ee;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Content Sections */
+.content-section {
+  flex: 1;
+}
+
+.summary-text {
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 30px;
+  text-align: justify;
+}
+
+/* Business Overview */
+.business-overview {
+  margin-top: 30px;
+}
+
+.business-overview h3 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.info-item {
+  padding: 15px;
+  background: #f8f9fa;
+  border-left: 4px solid #7839ee;
+  border-radius: 4px;
+}
+
+.info-item .label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 5px;
+}
+
+.info-item .value {
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+/* Cost Comparison */
+.comparison-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin: 40px 0;
+}
+
+.comparison-card {
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  border: 2px solid #e4e7ec;
+}
+
+.comparison-card.current {
+  background: #f8f9fa;
+}
+
+.comparison-card.sanay {
+  background: linear-gradient(135deg, #7839ee 0%, #5b21b6 100%);
+  color: white;
+  border-color: #7839ee;
+}
+
+.comparison-card h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.cost-amount {
+  font-size: 48px;
+  font-weight: 700;
+  margin: 20px 0;
+}
+
+.cost-amount.highlight {
+  color: #e5b800;
+}
+
+.comparison-card.sanay .cost-amount {
+  color: #e5b800;
+}
+
+.cost-period {
+  font-size: 14px;
+  opacity: 0.8;
+  margin-bottom: 15px;
+}
+
+.annual-cost {
+  font-size: 18px;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.savings-highlight {
+  text-align: center;
+  padding: 40px;
+  background: linear-gradient(135deg, #12b76a 0%, #0d9d5f 100%);
+  color: white;
+  border-radius: 12px;
+  margin-top: 40px;
+}
+
+.savings-highlight h3 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.savings-amount {
+  font-size: 42px;
+  font-weight: 700;
+  margin: 15px 0;
+}
+
+.savings-annual {
+  font-size: 20px;
+  opacity: 0.9;
+}
+
+/* Efficiency Analysis */
+.efficiency-score {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  margin: 40px 0;
+}
+
+.score-circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7839ee 0%, #5b21b6 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+}
+
+.score-value {
+  font-size: 56px;
+  font-weight: 700;
+}
+
+.score-label {
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 10px;
+}
+
+.efficiency-description {
+  flex: 1;
+}
+
+.efficiency-description p {
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.efficiency-benefits {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.efficiency-benefits li {
+  padding: 12px 0;
+  padding-left: 30px;
+  position: relative;
+  font-size: 16px;
+}
+
+.efficiency-benefits li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #12b76a;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+/* AI Summary */
+.ai-summary {
+  background: #f8f9fa;
+  padding: 30px;
+  border-radius: 8px;
+  border-left: 4px solid #7839ee;
+}
+
+.ai-summary h3 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #7839ee;
+  margin-bottom: 15px;
+}
+
+.ai-summary p {
+  font-size: 16px;
+  line-height: 1.8;
+  text-align: justify;
+}
+
+/* Recommendations */
+.recommendations h3 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.tips-list {
+  list-style: none;
+  padding: 0;
+}
+
+.tips-list li {
+  padding: 15px;
+  margin-bottom: 15px;
+  background: #f8f9fa;
+  border-left: 4px solid #12b76a;
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Insights */
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.insight-card {
+  padding: 25px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border-top: 4px solid #7839ee;
+}
+
+.insight-card h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #7839ee;
+  margin-bottom: 15px;
+}
+
+.insight-content p {
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 12px;
+  text-align: justify;
+}
+
+/* Services */
+.services-list h3 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.service-item {
+  padding: 15px;
+  background: #f8f9fa;
+  border-left: 4px solid #7839ee;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.service-note {
+  background: #e8f5e9;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.service-note p {
+  margin: 8px 0;
+  font-size: 15px;
+}
+
+.service-note strong {
+  color: #12b76a;
+}
+
+/* Next Steps */
+.next-steps h3 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #7839ee;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.step-item {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.step-number {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #7839ee;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.step-content {
+  flex: 1;
+}
+
+.step-content h4 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.step-content p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #666;
+}
+
+/* Contact Information */
+.contact-info {
+  text-align: center;
+  padding: 40px;
+  background: #f8f9fa;
+  border-radius: 12px;
+}
+
+.contact-info h3 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #7839ee;
+  margin-bottom: 20px;
+}
+
+.contact-info > p {
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 30px;
+}
+
+.contact-details {
+  margin-top: 30px;
+}
+
+.contact-details p {
+  font-size: 18px;
+  margin: 15px 0;
+}
+
+.contact-details strong {
+  color: #7839ee;
+}
+
+/* Footer/Disclaimer */
+.footer-page {
+  display: flex;
+  align-items: flex-end;
+}
+
+.disclaimer {
+  background: #f8f9fa;
+  padding: 30px;
+  border-radius: 8px;
+  border: 1px solid #e4e7ec;
+}
+
+.disclaimer h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.disclaimer p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #666;
+  margin-bottom: 15px;
+  text-align: justify;
+}
+
+.footer-note {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e4e7ec;
+  font-size: 12px;
+  color: #999;
+  text-align: center;
+}
+
+/* Print-specific adjustments */
+@media print {
+  .pdf-page {
+    margin: 0;
+    padding: 15mm 10mm;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

@@ -1,0 +1,4 @@
+services:
+  Sanay-Quoting-Tool-Frontend:
+    image: latest
+    container_name: Sanay-Quoting-Tool-Frontend

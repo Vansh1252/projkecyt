@@ -1,0 +1,51 @@
+@import 'tailwindcss';
+@import '../styles/theme.css';
+@tailwind utilities;
+
+/* -------------------------------
+   Global Styles
+-------------------------------- */
+
+/* Set up your font and body defaults */
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+  background-color: #fff;
+  color: #080b13;
+  scroll-behavior: smooth;
+}
+
+.Button {
+  background-color: #7839ee;
+  color: #fff;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  width: auto;
+}
+
+.Button:hover {
+  background-color: #6633cc;
+  transform: scale(1.03);
+}
+
+h3 {
+  background-color: #fff;
+  color: #7839ee;
+}
+
+.display-xl {
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 4.5rem;
+  /* display-xl size */
+  line-height: 1.1;
+  /* display-xl line-height */
+  letter-spacing: -0.02em;
+  /* -2% */
+  text-align: center;
+}
