@@ -1,0 +1,12 @@
+{
+  "functions": {
+    "api/create-pdf/route.tsx": {
+      "memory": 2048,
+      "maxDuration": 60
+    },
+    "api/generate-pdf/route.ts": {
+      "memory": 2048,
+      "maxDuration": 60
+    }
+  }
+}

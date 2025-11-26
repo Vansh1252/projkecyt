@@ -1,13 +1,13 @@
-import puppeteer from 'puppeteer'
+import puppeteer from 'puppeteer-core'
+import getLaunchOptions from '@/lib/chromium-launch'
 
 export async function POST(req: Request) {
   try {
     const { html } = await req.json() // Receive HTML string
 
-    const browser = await puppeteer.launch({
-      headless: false,
-      args: ['--no-sandbox', '--disable-setuid-sandbox'],
-    })
+    // chromium.executablePath can be a function in some versions or a Promise/value in others
+    const launchOptions = await getLaunchOptions()
+    const browser = await puppeteer.launch(launchOptions)
 
     const page = await browser.newPage()
 
@@ -18,7 +18,7 @@ export async function POST(req: Request) {
 
     // Generate PDF
     const pdfBuffer = await page.pdf({
-      format: 'A4',
+      format: 'a4',
       printBackground: true,
       margin: {
         top: '30px',

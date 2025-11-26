@@ -1,4 +1,5 @@
-import puppeteer from 'puppeteer'
+import puppeteer from 'puppeteer-core'
+import getLaunchOptions from '@/lib/chromium-launch'
 import { supabaseAdmin } from '@/lib/supabase'
 import { renderPDFComponent } from '@/lib/pdf-renderer'
 import type { QuoteData, UserInput } from '@/utils/type'
@@ -485,13 +486,13 @@ export async function POST(req: Request) {
       </html>
     `
 
-    // 5. Launch Puppeteer
+    // 5. Launch a Chromium instance (serverless-friendly: use @sparticuz/chromium-min + puppeteer-core)
     let browser
     try {
-      browser = await puppeteer.launch({
-        headless: true,
-        args: ['--no-sandbox', '--disable-setuid-sandbox'],
-      })
+      // chromium.executablePath can be a function in some versions or a Promise/value in others
+      const launchOptions = await getLaunchOptions()
+
+      browser = await puppeteer.launch(launchOptions)
     } catch (launchError) {
       // eslint-disable-next-line no-console
       console.error('Error launching Puppeteer:', launchError)
@@ -509,7 +510,7 @@ export async function POST(req: Request) {
 
       // 6. Generate PDF
       const pdfUint8Array = await page.pdf({
-        format: 'A4',
+        format: 'a4',
         printBackground: true,
         margin: {
           top: '40px',
