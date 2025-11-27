@@ -55,8 +55,7 @@ export interface ButtonProps
  * Props for the link variant (anchor tag)
  */
 interface LinkProps
-  extends
-    CommonProps,
+  extends CommonProps,
     DetailedHTMLProps<
       Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'color'>,
       HTMLAnchorElement
