@@ -1,5 +1,5 @@
 {
-  "name": "NEW FOLDER (2)",
+  "name": "PROJKECYT",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -41,7 +41,6 @@
     ]
   },
   "dependencies": {
-    "@react-pdf/renderer": "^3.4.4",
     "@reduxjs/toolkit": "^2.10.1",
     "@sparticuz/chromium-min": "^141.0.0",
     "@supabase/supabase-js": "^2.81.0",
