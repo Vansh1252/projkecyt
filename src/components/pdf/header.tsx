@@ -1,6 +1,6 @@
 import { View, Image, StyleSheet, Text } from '@react-pdf/renderer'
 import { join } from 'path'
-import { getImageBase64 } from './reactpdfrendercomponenets'
+import { getImageBase64 } from './utils'
 
 const pxToPt = (px: number) => px / 1.333
 

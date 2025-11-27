@@ -214,7 +214,8 @@ interface BaseProps {
 }
 
 interface TextFieldProps
-  extends BaseProps,
+  extends
+    BaseProps,
     AriaTextFieldProps,
     Pick<
       InputBaseProps,

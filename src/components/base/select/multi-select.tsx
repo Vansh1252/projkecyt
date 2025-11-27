@@ -63,7 +63,8 @@ const ComboboxContext = createContext<{
 })
 
 interface MultiSelectProps
-  extends Omit<AriaComboBoxProps<SelectItemType>, 'children' | 'items'>,
+  extends
+    Omit<AriaComboBoxProps<SelectItemType>, 'children' | 'items'>,
     RefAttributes<HTMLDivElement> {
   hint?: string
   label?: string

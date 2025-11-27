@@ -19,8 +19,7 @@ const sizes = {
 }
 
 interface SelectItemProps
-  extends Omit<AriaListBoxItemProps<SelectItemType>, 'id'>,
-    SelectItemType {}
+  extends Omit<AriaListBoxItemProps<SelectItemType>, 'id'>, SelectItemType {}
 
 export const SelectItem = ({
   label,

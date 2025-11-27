@@ -33,7 +33,8 @@ import { useResizeObserver } from '@/hooks/use-resize-observer'
 import { cx } from '@/utils/cx'
 
 interface ComboBoxProps
-  extends Omit<AriaComboBoxProps<SelectItemType>, 'children' | 'items'>,
+  extends
+    Omit<AriaComboBoxProps<SelectItemType>, 'children' | 'items'>,
     RefAttributes<HTMLDivElement>,
     CommonProps {
   shortcut?: boolean

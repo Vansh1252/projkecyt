@@ -41,7 +41,8 @@ export interface CommonProps {
  * Props for the button variant (non-link)
  */
 export interface ButtonProps
-  extends CommonProps,
+  extends
+    CommonProps,
     DetailedHTMLProps<
       Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'color' | 'slot'>,
       HTMLButtonElement
@@ -54,7 +55,8 @@ export interface ButtonProps
  * Props for the link variant (anchor tag)
  */
 interface LinkProps
-  extends CommonProps,
+  extends
+    CommonProps,
     DetailedHTMLProps<
       Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'color'>,
       HTMLAnchorElement

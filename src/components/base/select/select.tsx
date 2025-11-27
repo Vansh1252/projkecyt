@@ -38,7 +38,8 @@ export interface CommonProps {
 }
 
 interface SelectProps
-  extends Omit<AriaSelectProps<SelectItemType>, 'children' | 'items'>,
+  extends
+    Omit<AriaSelectProps<SelectItemType>, 'children' | 'items'>,
     RefAttributes<HTMLDivElement>,
     CommonProps {
   items?: SelectItemType[]

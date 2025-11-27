@@ -4,7 +4,6 @@ import React from 'react'
 const { renderToBuffer } = await import('@react-pdf/renderer')
 import ReactPDFRenderComponents from '@/components/pdf/reactpdfrendercomponenets'
 import { supabaseAdmin } from '@/lib/supabase'
-import type { QuoteData, UserInput } from '@/utils/type'
 
 export async function POST(req: Request) {
   try {
@@ -42,15 +41,10 @@ export async function POST(req: Request) {
       )
     }
 
-
     const pdfBuffer = await renderToBuffer(
       React.createElement(ReactPDFRenderComponents)
     )
 
-    // Convert to Uint8Array (renderToBuffer returns Buffer or Uint8Array)
-    const uint8Array = Buffer.isBuffer(pdfBuffer)
-      ? new Uint8Array(pdfBuffer)
-      : pdfBuffer
     const fileName = `quote-${quoteId}-${Date.now()}.pdf`
     const filePath = `quotes/${fileName}`
 

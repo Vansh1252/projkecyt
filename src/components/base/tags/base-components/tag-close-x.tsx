@@ -9,8 +9,7 @@ import {
 import { cx } from '@/utils/cx'
 
 interface TagCloseXProps
-  extends AriaButtonProps,
-    RefAttributes<HTMLButtonElement> {
+  extends AriaButtonProps, RefAttributes<HTMLButtonElement> {
   size?: 'sm' | 'md' | 'lg'
   className?: string
 }

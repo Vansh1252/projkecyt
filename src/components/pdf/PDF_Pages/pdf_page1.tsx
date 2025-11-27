@@ -1,7 +1,7 @@
 import React from 'react'
 import { Page, Text, View, Image, StyleSheet } from '@react-pdf/renderer'
 import { join } from 'path'
-import { getImageBase64 } from '../reactpdfrendercomponenets'
+import { getImageBase64 } from '../utils'
 import Footer from '../footer'
 
 const pxToPt = (px: number) => px / 1.333
