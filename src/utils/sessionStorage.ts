@@ -27,6 +27,8 @@ export interface FormData {
   internalCost?: string
   currentExternalCost?: string
   estimatedHoursSpent?: string
+  isHourlyValueOverridden?: boolean
+  isInternalCostOverridden?: boolean
 
   // Service Selection
   reportingFrequency?: string

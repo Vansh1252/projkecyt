@@ -116,24 +116,16 @@ export default function AboutBusinessContent() {
         estimatedHoursSpent: data.estimatedHoursSpent || '0',
       })
 
-      // Check if hourly value was manually overridden
-      // If user has a stored hourlyValue that's not '0', consider it overridden
-      if (
-        data.hourlyValue &&
-        data.hourlyValue !== '0' &&
-        data.setupType === 'owner-led'
-      ) {
-        setIsHourlyValueOverridden(true)
+      // Restore override flags from sessionStorage
+      if (data.setupType === 'owner-led' && data.isHourlyValueOverridden) {
+        setIsHourlyValueOverridden(data.isHourlyValueOverridden)
       }
 
-      // Check if internal cost was manually overridden
-      // If user has a stored internalCost that's not '0', consider it overridden
       if (
-        data.internalCost &&
-        data.internalCost !== '0' &&
-        (data.setupType === 'internal-team' || data.setupType === 'hybrid')
+        (data.setupType === 'internal-team' || data.setupType === 'hybrid') &&
+        data.isInternalCostOverridden
       ) {
-        setIsInternalCostOverridden(true)
+        setIsInternalCostOverridden(data.isInternalCostOverridden)
       }
     }
 
@@ -262,11 +254,19 @@ export default function AboutBusinessContent() {
       saveFormData({
         ...formik.values,
         setupType,
+        isHourlyValueOverridden,
+        isInternalCostOverridden,
       })
     }, 300)
 
     return () => clearTimeout(timeout)
-  }, [formik.values, setupType, isClient])
+  }, [
+    formik.values,
+    setupType,
+    isClient,
+    isHourlyValueOverridden,
+    isInternalCostOverridden,
+  ])
 
   // Handle continue button click with validation
   const handleContinue = async () => {
