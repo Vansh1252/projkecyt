@@ -1,67 +1,101 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<h1 align="center">AI Business Onboarding & Proposal Generator</h1>
 
-## Getting Started
+<p align="center">
+  A Next.js app that walks a business through a short onboarding flow, uses OpenAI to recommend the right bookkeeping and finance services, and generates a branded PDF report that is emailed to the client.
+</p>
 
-First, run the development server:
+<p align="center">
+  <a href="https://projkecyt.vercel.app"><img src="https://img.shields.io/badge/Live_Demo-Visit_Site-000000?style=for-the-badge&logo=vercel&logoColor=white"/></a>
+  <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white"/>
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white"/>
+  <img src="https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Supabase-3FCF8E?style=for-the-badge&logo=supabase&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white"/>
+</p>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## How it works
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Company information:** the user enters basic company details
+2. **About the business:** industry, size and how the business operates
+3. **Current setup:** the tools and processes they use today
+4. **Service selection:** Intelligent Bookkeeping is always included, and **OpenAI suggests add-on services** based on the answers, which the user can apply with one click
+5. **Result screen:** a summary of the recommended package
+6. **PDF report and email:** a PDF is generated and emailed to the user with Resend, and the lead can be sent to Zapier
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Features
 
-## Learn More
+- Multi-step onboarding form with Formik and Yup/Zod validation
+- AI service recommendations from the OpenAI API
+- PDF generation with both @react-pdf/renderer and headless Chromium (Puppeteer + @sparticuz/chromium-min, so it runs on serverless)
+- Transactional email with Resend
+- Supabase for storing submissions and reports
+- Redux Toolkit for form state across steps
+- Charts with Recharts and accessible UI with React Aria components
+- Zapier webhook integration
+- Docker, Docker Compose, a Makefile, commitlint and GitLab CI
 
-To learn more about Next.js, take a look at the following resources:
+## API routes
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Route | Purpose |
+|---|---|
+| `/api/user_input` | Save the onboarding answers |
+| `/api/about_page` | Save business details |
+| `/api/ai_suggestion` | Get AI service recommendations |
+| `/api/review_input/[id]` | Review a saved submission |
+| `/api/report`, `/api/report/[id]` | Create and fetch reports |
+| `/api/create-pdf`, `/api/pdf/[id]`, `/api/download-pdf` | Generate and download the PDF |
+| `/api/email` | Email the report |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Tech stack
 
-## Deploy on Vercel
+| Area | Tools |
+|---|---|
+| Framework | Next.js (App Router), React, TypeScript |
+| Styling | Tailwind CSS, Untitled UI icons, React Aria |
+| State and forms | Redux Toolkit, Formik, Yup, Zod |
+| AI | OpenAI API |
+| Data | Supabase |
+| PDF | @react-pdf/renderer, Puppeteer Core, @sparticuz/chromium-min |
+| Email | Resend |
+| DevOps | Docker, Docker Compose, GitLab CI, Vercel |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Getting started
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Prerequisites:** Node.js 18+, a Supabase project, and OpenAI and Resend API keys
 
-## Local development: PDF / Puppeteer
-
-The project uses server-side Chromium via `@sparticuz/chromium-min` + `puppeteer-core` for generating PDFs on serverless platforms. This combination lets the function stay small enough to deploy in constrained hosts (e.g. Vercel) when configured correctly.
-
-- To install dependencies (after the fix in package.json) run:
-
-```bash
+~~~bash
+git clone https://github.com/Vansh1252/projkecyt.git
+cd projkecyt
 npm install
-```
+~~~
 
-- For local development you have two options so `puppeteer-core` can find a Chromium binary:
-	1. Install Chrome / Chromium on your machine (system-installed binary will be used by puppeteer-core), or
-	2. Install full `puppeteer` as a dev dependency which downloads a Chromium binary suitable for local testing:
+Create a `.env.local` file:
 
-```bash
-npm install --save-dev puppeteer
-```
+~~~env
+NEXT_PUBLIC_OPENAI_API_KEY=sk-...
+RESEND_API_KEY=re_...
+RESEND_FROM_EMAIL=reports@yourdomain.com
+NEXT_PUBLIC_BASE_URL=http://localhost:3000
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+ZAPIER_WEBHOOK_URL=https://hooks.zapier.com/...
+# plus your Supabase URL and anon key
+~~~
 
-When you deploy to Vercel this project can use a serverless-compatible Chromium binary (via `@sparticuz/chromium-min`) so you don't need the full `puppeteer` there — but note the `-min` package doesn't include the packed binaries. See the code comments and `src/lib/chromium-launch.ts` for how the executable path is resolved (you may need to provide a remote pack URL or a system path for your runtime).
+Run it:
 
-If you're using `@sparticuz/chromium-min` you can set the environment variable `CHROMIUM_PACK_URL` in your Vercel project to point to a hosted chromium-pack tar file (or provide a local path via `LOCAL_CHROMIUM_PATH` for local dev). The helper `src/lib/chromium-launch.ts` will pass that value to `chromium.executablePath()` so it can download and extract the pack on first run.
+~~~bash
+npm run dev      # http://localhost:3000
+npm run build && npm start
+~~~
 
-Local development helper
-- For local testing install the full `puppeteer` package as a dev dependency so a Chromium binary is available (you already did this with `npm install --save-dev puppeteer`).
-- The helper detects local dev (NODE_ENV=development or IS_LOCAL=1). It will prefer `LOCAL_CHROMIUM_PATH` if set, otherwise it tries to find the dev `puppeteer` bundle executable.
-- You can run the app locally in headless mode by setting HEADLESS=1, or run headful mode with HEADLESS=0. Example:
+Or with Docker:
 
-```bash
-IS_LOCAL=1 HEADLESS=1 npm run dev
-```
+~~~bash
+docker compose up --build
+~~~
+
+## Author
+
+**Vansh Jain**: [GitHub](https://github.com/Vansh1252) · sanklechav65@gmail.com
